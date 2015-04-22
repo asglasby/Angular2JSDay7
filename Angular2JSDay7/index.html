@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+<head>
+    <title></title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="myStyle.css" rel="stylesheet" />
+</head>
+<body>    
+    <a href="SecondPage.html">SecondPage</a>
+    <div ng-controller="HomeController">
+        <div id="inputs" class="form-inline">
+            <i>Description:</i><input class="form-control" placeholder="Bug Description...." ng-model="inputDesc" />
+            <i>Priority:</i>
+            <select class="form-control" ng-model="inputPriority">
+                <option value="Low" selected>Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+            <button class="btn btn-info" ng-click="addBug()">Submit</button> 
+        </div>
+        <br />
+        <div class="col-sm-3 well" ng-repeat="bug in bugs">
+            <i><b>Description:</b></i>{{bug.description}}, <br />
+            <i><b>Priority</b></i>{{bug.priority}}
+        </div>
+    </div>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="app/main.js"></script>
+    <script src="app/Services/BugService.js"></script>
+    <script src="app/Controllers/HomeController.js"></script>
+</body>
+</html>

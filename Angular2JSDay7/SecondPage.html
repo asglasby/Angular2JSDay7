@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+<head>
+    <title></title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="myStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <a href="index.html">Main Page</a>
+    <div ng-controller="SecondController">
+        <div id="inputs" class="form-inline">
+            <i>Description:</i><input class="form-control" placeholder="Bug Description...." ng-model="inputDesc" />
+            <i>Priority:</i>
+            <select class="form-control" ng-model="inputPriority">
+                <option value="Low" selected>Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+            <button class="btn btn-info" ng-click="addBug()">Submit</button>
+        </div>
+        <br />
+        <div class="col-sm-3 well" ng-repeat="bug in bugs">
+            <i><b>Description:</b></i>{{bug.description}}, <span ng-model="editDescription"></span><br />
+            <i><b>Priority</b></i>{{bug.priority}}<span ng-model="editPriority"></span><input type="hidden" value={{bug.priority}}>
+            <button class="btn btn-warning" ng-click="editBug($index)">Edit</button>
+            <button class="btn btn-danger" ng-click="deleteBug($index)">Delete</button>
+        </div>
+    </div>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="app/main.js"></script>
+    <script src="app/Services/BugFactory.js"></script>
+    <script src="app/Controllers/SecondController.js"></script>
+</body>
+</html>
+
